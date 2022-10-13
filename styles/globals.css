@@ -6,6 +6,8 @@ body {
   padding: 0;
   margin: 0;
   font-family:  sans-serif;
+  background-image: linear-gradient(to right, #3378FF , #9442FE);
+  
 }
 
 a {
