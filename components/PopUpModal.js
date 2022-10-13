@@ -14,11 +14,12 @@ const Modal = ({deleteProp,id}) => (
                         <hr />
 
                            <div className=' mx-auto text-center'>
+                           <button onClick={()=>close()} className='bg-green-500 p-2 mt-1 rounded-md font-bold text-white border-2 outline-none transition-all hover:border-green-500 hover:bg-white hover:text-green-500'>Cancel</button>
                              <button onClick={()=>{
                                 deleteProp(id)
                                 close()
                                 }} className='outline-none bg-red-500 p-2 mt-1 rounded-md font-bold text-white border-2 transition-all hover:border-red-500 hover:bg-white hover:text-red-500'>Delete</button>
-                             <button onClick={()=>close()} className='bg-green-500 p-2 mt-1 rounded-md font-bold text-white border-2 outline-none transition-all hover:border-green-500 hover:bg-white hover:text-green-500'>Cancel</button>
+                             
                        </div>
       
                     </div>
