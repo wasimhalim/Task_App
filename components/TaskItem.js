@@ -19,6 +19,7 @@ function TaskItem({data,fetchData}) {
     }
   return (
     <>
+        
         <div className={`h-80 p-2 mt-2 font-bold overflow-y-auto   scrollbar scrollbar-thumb-blue-400 scrollbar-width-2  scrollbar-track-gray-100 flex flex-col gap-2`}>
     
                          {
@@ -29,13 +30,17 @@ function TaskItem({data,fetchData}) {
                                         <div><h6>{item.task}</h6></div>
                                         <div><span  className='text-red-400 hover:text-red-600 transition-colors'> <PopUpModal   deleteProp={deleteHandler} id={item.id} /></span></div>
                                     </div>
-                                    
+                                  
                                 </div>
                               
                             )
                         })
                     }
+                    
+                    
         </div>
+        <hr />
+        <h6 className='text-center text-blue-400'>App Created By:Wasim Halim</h6>
     </>
   )
 }

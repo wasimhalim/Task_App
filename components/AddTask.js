@@ -37,6 +37,8 @@ function AddTask({dataCall}) {
   }
   return (
     < >
+    <h2 className='text-center pb-2 font-bold text-blue-500'>Task Management App</h2>
+    <hr />
         <form onSubmit={handleForm}>
             <div className='flex flex-row justify-center gap-3'>
             <div>
