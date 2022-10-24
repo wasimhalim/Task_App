@@ -12,12 +12,34 @@ function AddTask({dataCall}) {
     if(!task){
       setEmptyMessageErrorDisplay("")
     }else{
+     
       setEmptyMessageErrorDisplay("hidden")
       setAddStatus(true)
       const {data,error,status}=await supabase
       .from("task")
       .insert([{task:task,status:'400'}])
-    
+      if(localStorage.getItem("data")){
+               
+               console.log("Data is present")
+               function start(){
+               const data=localStorage.getItem("data")
+               
+               let tasks=JSON.parse(data)
+               
+               tasks["data"].push(task)
+               localStorage.setItem("data",JSON.stringify(tasks))
+               
+               }
+                start()
+               
+           
+     }
+     else{     
+         var tasks= {data:[task]}
+         console.log("data is  not present");
+         localStorage.setItem("data",JSON.stringify(tasks))
+          
+     }
      if(status===201){
       setTask("")
       dataCall()
@@ -30,7 +52,7 @@ function AddTask({dataCall}) {
       
      }else{
       setAddStatus(false)
-      window.alert("Internet Issue")
+     
      }
 
     }

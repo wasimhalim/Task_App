@@ -5,10 +5,18 @@ import TaskItem from '../components/TaskItem'
 import AddTask from '../components/AddTask';
 export default function Home() {
   const [taskData, setTaskData] = useState([]);
+ 
+
+  
   const fetchData=async ()=>{
+
+      let localData=localStorage.getItem("data")
+      let jsonOutput=JSON.parse(localData)
+      setTaskData(jsonOutput.data)
+     
       const {data,error}=await supabase.from("task").select() .order('id', { ascending: false })
       if(data){
-        setTaskData(data)
+        
       }
       if(error){
         window.alert("Internet Issue for loading data")
@@ -20,9 +28,19 @@ export default function Home() {
     
     fetchData()
     
+    
   }, [])
   
+  function delteOneItem(data){
+   
+    let localData=localStorage.getItem("data")
+    localData=JSON.parse(localData)
+    localData['data']=localData['data'].filter(item=>item!=data)
+    localStorage.setItem('data',JSON.stringify(localData))
 
+    fetchData()
+    
+  }
   return (
     <div  >
       <Head>
@@ -37,7 +55,7 @@ export default function Home() {
         <AddTask dataCall={fetchData} />
 
       {
-        taskData.length >0 && <TaskItem fetchData={fetchData} data={taskData}/>
+        taskData.length >0 && <TaskItem fetchData={fetchData} delteOneItem={delteOneItem} data={taskData}/>
       }
       </div>
      </div>
